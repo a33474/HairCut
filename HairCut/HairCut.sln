@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairCut.BLL", "HairCut\HairCut.BLL\HairCut.BLL.csproj", "{98D3ED5C-5A82-42E5-936D-D1E7935A4AC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairCut.DAL", "HairCut\HairCut.DAL\HairCut.DAL.csproj", "{EB24F7B3-6C80-4757-9F78-827647E839E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairCut.Services", "HairCut\HairCut.Services\HairCut.Services.csproj", "{3EA556B1-0CB3-4F45-BD42-63F8DEAA8B6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairCut.Utilities", "HairCut\HairCut.Utilities\HairCut.Utilities.csproj", "{7C7438E6-5509-4A89-B945-E0876A77CD39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairCut.ViewModels", "HairCut\HairCut.ViewModels\HairCut.ViewModels.csproj", "{9C0ED9FA-31DF-49A2-90DF-6B6BB5B7984B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairCut.Web", "HairCut\HairCut.Web\HairCut.Web.csproj", "{7F53B20A-D7F1-4878-91D6-45E028121B34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98D3ED5C-5A82-42E5-936D-D1E7935A4AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98D3ED5C-5A82-42E5-936D-D1E7935A4AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98D3ED5C-5A82-42E5-936D-D1E7935A4AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98D3ED5C-5A82-42E5-936D-D1E7935A4AC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB24F7B3-6C80-4757-9F78-827647E839E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB24F7B3-6C80-4757-9F78-827647E839E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB24F7B3-6C80-4757-9F78-827647E839E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB24F7B3-6C80-4757-9F78-827647E839E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EA556B1-0CB3-4F45-BD42-63F8DEAA8B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EA556B1-0CB3-4F45-BD42-63F8DEAA8B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EA556B1-0CB3-4F45-BD42-63F8DEAA8B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EA556B1-0CB3-4F45-BD42-63F8DEAA8B6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C7438E6-5509-4A89-B945-E0876A77CD39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C7438E6-5509-4A89-B945-E0876A77CD39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C7438E6-5509-4A89-B945-E0876A77CD39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C7438E6-5509-4A89-B945-E0876A77CD39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C0ED9FA-31DF-49A2-90DF-6B6BB5B7984B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C0ED9FA-31DF-49A2-90DF-6B6BB5B7984B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C0ED9FA-31DF-49A2-90DF-6B6BB5B7984B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C0ED9FA-31DF-49A2-90DF-6B6BB5B7984B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F53B20A-D7F1-4878-91D6-45E028121B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F53B20A-D7F1-4878-91D6-45E028121B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F53B20A-D7F1-4878-91D6-45E028121B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F53B20A-D7F1-4878-91D6-45E028121B34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D5A97CE7-7D57-4BA5-B061-E8BA0230132A}
+	EndGlobalSection
+EndGlobal
