@@ -24,6 +24,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\js\site.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HairCut.BLL\HairCut.BLL.csproj" />
     <ProjectReference Include="..\HairCut.Services\HairCut.Services.csproj" />
     <ProjectReference Include="..\HairCut.Utilities\HairCut.Utilities.csproj" />
