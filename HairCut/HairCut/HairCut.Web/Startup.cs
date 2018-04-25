@@ -52,6 +52,31 @@ namespace HairCut.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            HairCut(services);
+            #region Our Services
+
+            var cs = new ConnectionStringDto() { ConnectionString = _connectionString };
+            services.AddSingleton(cs);
+
+            services.AddScoped<DbContext, ApplicationDbContext<User, Role, int>>();
+            services.AddScoped<DbContextOptions<ApplicationDbContext<User, Role, int>>>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IEmailSender, EmailSender>();
+            var mappingConfig = new AutoMapper.MapperConfiguration(cfg =>
+            {
+                cfg.Mapping(services.BuildServiceProvider().GetService<UserManager<User>>());
+            });
+
+            services.AddSingleton(x => mappingConfig.CreateMapper());
+            services.AddScoped<IRepository<User>, EntityFrameworkRepository<User>>();
+            services.AddScoped<IRepository<Role>, EntityFrameworkRepository<Role>>();
+            services.AddScoped<IRepository<IdentityUserRole<int>>, EntityFrameworkRepository<IdentityUserRole<int>>>();
+            #endregion
+            Services = services;
+        }
+
+        private void HairCut(IServiceCollection services)
+        {
             #region Framework Services
             // Add framework services.
             services.AddOptions();
@@ -118,27 +143,6 @@ namespace HairCut.Web
             //    };
             //});
             #endregion
-
-            #region Our Services
-
-            var cs = new ConnectionStringDto() { ConnectionString = _connectionString };
-            services.AddSingleton(cs);
-
-            services.AddScoped<DbContext, ApplicationDbContext<User, Role, int>>();
-            services.AddScoped<DbContextOptions<ApplicationDbContext<User, Role, int>>>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<IEmailSender, EmailSender>();
-            var mappingConfig = new AutoMapper.MapperConfiguration(cfg =>
-            {
-                cfg.Mapping(services.BuildServiceProvider().GetService<UserManager<User>>());
-            });
-
-            services.AddSingleton(x => mappingConfig.CreateMapper());
-            services.AddScoped<IRepository<User>, EntityFrameworkRepository<User>>();
-            services.AddScoped<IRepository<Role>, EntityFrameworkRepository<Role>>();
-            services.AddScoped<IRepository<IdentityUserRole<int>>, EntityFrameworkRepository<IdentityUserRole<int>>>();
-            #endregion
-            Services = services;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -162,10 +166,10 @@ namespace HairCut.Web
 
             app.UseSession();
             var dbContext = Services.BuildServiceProvider().GetRequiredService<DbContext>();
-            dbContext.Database.Migrate();
+          //  dbContext.Database.Migrate();
             var userManager = Services.BuildServiceProvider().GetRequiredService<UserManager<User>>();
             var roleManager = Services.BuildServiceProvider().GetRequiredService<RoleManager<Role>>();
-            Seed.RunSeed(dbContext, roleManager, userManager);
+           // Seed.RunSeed(dbContext, roleManager, userManager);
 
             app.UseAuthentication();
             app.UseStaticFiles();

@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180425092313_DbSchema.cs" />
+    <Compile Remove="Migrations\20180425093202_DbSchema.cs" />
+    <Compile Remove="Migrations\20180425094013_DbSchema.cs" />
+    <Compile Remove="Migrations\20180425094216_DbSchema.cs" />
+    <Compile Remove="Migrations\20180425094319_DbSchema.cs" />
+    <Compile Remove="Migrations\20180425095032_DbSchema.cs" />
+    <Compile Remove="Migrations\20180425100833_DbSchema.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
