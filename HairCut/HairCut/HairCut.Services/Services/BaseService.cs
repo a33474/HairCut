@@ -5,11 +5,17 @@ namespace HairCut.Services.Services
 {
     public class BaseService
     {
-        protected readonly IUnitOfWork UoW;
+        protected readonly IUnitOfWork _uow;
         protected readonly ILogger Logger;
+
+        public BaseService(IUnitOfWork uow)
+        {
+            _uow = uow;
+        }
+
         public BaseService(IUnitOfWork uow, ILoggerFactory loggerFactory)
         {
-            UoW = uow;
+            _uow = uow;
             Logger = loggerFactory.CreateLogger<BaseService>();
         }
     }

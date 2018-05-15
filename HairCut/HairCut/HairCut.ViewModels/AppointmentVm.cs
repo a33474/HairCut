@@ -1,12 +1,11 @@
-﻿using HairCut.BLL.Entities.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace HairCut.BLL.Entities
+namespace HairCut.ViewModels
 {
-    public class Appointment
+    public class AppointmentVm
     {
         public int Id { get; set; }
 
@@ -19,13 +18,13 @@ namespace HairCut.BLL.Entities
         public decimal Price { get; set; }
 
         public bool Canceled { get; set; }
-        
+
         [ForeignKey("ClientId")]
-        public Client Client { get; set; }
+        public ClientVm Client { get; set; }
         public int ClientId { get; set; }
 
         [ForeignKey("EmployeeId")]
-        public Employee Employee { get; set; }
+        public EmployeeVm Employee { get; set; }
         public int EmployeeId { get; set; }
     }
 }

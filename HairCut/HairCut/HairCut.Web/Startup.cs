@@ -64,7 +64,7 @@ namespace HairCut.Web
             services.AddTransient<IEmailSender, EmailSender>();
             var mappingConfig = new AutoMapper.MapperConfiguration(cfg =>
             {
-                cfg.Mapping(services.BuildServiceProvider().GetService<UserManager<User>>());
+                cfg.AddMapping(services.BuildServiceProvider().GetService<UserManager<User>>());
             });
 
             services.AddSingleton(x => mappingConfig.CreateMapper());

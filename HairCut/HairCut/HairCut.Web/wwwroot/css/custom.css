@@ -480,6 +480,7 @@ a:focus{
 	position: relative;
 	z-index: 1;
 	text-align: center;
+
 }
 
 .header-banner p{
@@ -632,7 +633,7 @@ a:focus{
 	text-transform: uppercase;
 	color: #be9342;
 	font-weight: 600;
-	font-size: 22	px;
+	font-size: 22px;
 	letter-spacing: 0.1em;
 	margin-bottom: 14px;
 }

@@ -7,15 +7,14 @@ namespace HairCut.Web.Configuration
 {
     public static class AutoMapperConfig
     {
-        public static IMapperConfigurationExpression Mapping(this IMapperConfigurationExpression configurationExpression, UserManager<User> userManager)
+        public static IMapperConfigurationExpression AddMapping(this IMapperConfigurationExpression configurationExpression, UserManager<User> userManager)
         {
-            Mapper.Initialize(cfg =>
+            Mapper.Initialize(mapper =>
             {
                 // Maps
-                cfg.CreateMap<User, BaseUserVm>()
-                    .ForMember(dest => dest.Roles, member => member.MapFrom(src =>
-                         userManager.GetRolesAsync(src).Result
-                    ));
+                mapper.CreateMap<Appointment, AppointmentVm>();
+                mapper.CreateMap<User, BaseUserVm>().ForMember(dest => dest.Roles, member => member.MapFrom(src => userManager.GetRolesAsync(src).Result ));      
+                //mapper.CreateMap<Comment, CommentVm>();
             });
             return configurationExpression;
         }
