@@ -1,1 +1,18 @@
-﻿    
+﻿@using HairCut.ViewModels;
+
+@model IEnumerable<AppointmentVm>
+@{
+    ViewData["Title"] = "Appointments";
+}
+<div class="appointment-content">
+    <h3>Posts</h3>
+    <div class="pull-left">
+        @Html.ActionLink("Add", "AddAppointment", routeValues: null, htmlAttributes: new { @class = "btn btn-default" })
+    </div>
+    <div class="appointments">
+        @foreach (var appointment in Model)
+        {
+            @Html.Partial("_AppointmentPartial", appointment)
+        }
+    </div>
+</div>

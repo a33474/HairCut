@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HairCut.BLL.Entities;
+using HairCut.BLL.Entities.Identity;
 using HairCut.ViewModels;
 using Microsoft.AspNetCore.Identity;
 
@@ -13,8 +14,9 @@ namespace HairCut.Web.Configuration
             {
                 // Maps
                 mapper.CreateMap<Appointment, AppointmentVm>();
+                mapper.CreateMap<Client, ClientVm>();
                 mapper.CreateMap<User, BaseUserVm>().ForMember(dest => dest.Roles, member => member.MapFrom(src => userManager.GetRolesAsync(src).Result ));      
-                //mapper.CreateMap<Comment, CommentVm>();
+                
             });
             return configurationExpression;
         }
