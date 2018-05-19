@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Core.Interfaces.UoW;
+﻿using AutoMapper;
+using DataAccessLayer.Core.Interfaces.UoW;
 using HairCut.BLL.Entities;
 using HairCut.BLL.Entities.Identity;
 using HairCut.Services.Interfaces;
@@ -35,10 +36,10 @@ namespace HairCut.Services.Services
         public void AddOrUpdateClient(ClientVm clientVm)
         {
             var client = Mapper.Map<Client>(clientVm);
-            client.DateOfCreating = DateTime.Now;
+            client.FirstName = string.Empty;
             _uow.Repository<Client>().AddOrUpdate(x => x.FirstName == client.FirstName, client);
             _uow.Save();
         }
     }
 }
-}
+

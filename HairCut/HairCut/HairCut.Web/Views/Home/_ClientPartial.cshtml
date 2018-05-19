@@ -1,0 +1,50 @@
+﻿@using HairCut.ViewModels
+@model ClientVm
+
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="pull-right">
+            @Html.ActionLink("Edit", "EditClient",
+                               new { @id = Model.Appointments}, new { @class = "btn btn-default" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ContactMobile,
+                           htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.ContactMobile)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ContactMail,
+                           htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.ContactMail)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-3">
+            <button class="btn btn-default show-appointment-container" ClientId="@Model.Appointments">Appointment</button>
+        </div>
+        <div class="col-md-offset-2 row add-appointment-container" Clientid="@Model.Appointments">
+            <div class="col-md-10">
+                <textarea class="appointment-text"></textarea>
+                <button class="btn btn-default btn-add-appointment"> Add Appointment</button>
+            </div>
+        </div>
+    </div>
+    <div class="form-group appointments-container">
+        <label class="appointments-label"> Appointments: </label>
+        <div class="col-md-8">
+            <div class="row">
+                @foreach (var appointment in Model.Appointments)
+                {
+                    @Html.Partial("_AppointmentPartial", appointment);
+                }
+
+            </div>
+        </div>
+    </div>
+
+</div>

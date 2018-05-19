@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Core.Interfaces.UoW;
+﻿using AutoMapper;
+using DataAccessLayer.Core.Interfaces.UoW;
 using HairCut.BLL.Entities;
 using HairCut.Services.Interfaces;
 using HairCut.ViewModels;
@@ -34,7 +35,7 @@ namespace HairCut.Services.Services
         public void AddOrUpdateAppointment(AppointmentVm appointmentVm)
         {
             var appointment = Mapper.Map<Appointment>(appointmentVm);
-            appointment.DateOfCreating = DateTime.Now;
+            appointment.DateOfCreation = DateTime.Now;
             _uow.Repository<Appointment>().AddOrUpdate(x => x.Id == appointment.Id, appointment);
             _uow.Save();
         }

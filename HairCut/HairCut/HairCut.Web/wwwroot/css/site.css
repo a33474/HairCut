@@ -32,4 +32,25 @@
     .carousel-caption {
         display: none;
     }
+
+    .appointments-container {
+        margin-left: 300px !important;
+    }
+
+    .appointments-label {
+        display: inherit;
+    }
+
+    .control-label {
+        padding-top: 0 !important;
+    }
+
+    .btn-add-appointment {
+        margin-top: 5px;
+        display: block;
+    }
+
+    .appointment-text {
+        margin-top: 5px;
+    }
 }

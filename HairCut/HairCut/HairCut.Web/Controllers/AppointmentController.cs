@@ -52,7 +52,7 @@ namespace HairCut.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditPost(AppointmentVm appointmentVm)
+        public IActionResult EditAppointment(AppointmentVm appointmentVm)
         {
             if (ModelState.IsValid)
             {
