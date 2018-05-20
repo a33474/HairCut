@@ -27,12 +27,13 @@ namespace HairCut.Web.Controllers
             else
                 return View(appointmentVm);
         }
-
+        /* Create/AppointmentVm/GET*/
+        [HttpGet]
         public IActionResult AddAppointment()
         {
-            return View();
+            return View(new AppointmentVm());
         }
-
+        /* Create/AppointmentVm/POST*/
         [HttpPost]
         public IActionResult AddAppointment(AppointmentVm appointmentVm)
         {

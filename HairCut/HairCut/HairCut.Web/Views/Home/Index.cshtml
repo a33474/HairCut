@@ -1,18 +1,1 @@
-﻿@using HairCut.ViewModels;
-
-@model IEnumerable<ClientVm>
-@{
-    ViewData["Title"] = "Clients";
-}
-<div class="client-content">
-    <h3>Clients</h3>
-    <div class="pull-left">
-        @Html.ActionLink("Add", "AddClient", routeValues: null, htmlAttributes: new { @class = "btn btn-default" })
-    </div>
-    <div class="clients">
-        @foreach (var client in Model)
-        {
-            @Html.Partial("_ClientPartial", client)
-        }
-    </div>
-</div>
+﻿
