@@ -1,4 +1,5 @@
 ﻿@using HairCut.ViewModels;
+@model IEnumerable<AppointmentVm>
 @{
     ViewData["Title"] = "Index";
 }
@@ -9,17 +10,20 @@
         <th>Appointment StartTime</th>
         <th>Employee</th>
     </tr>
-        @for (int i = 0; i < Model.Rows.Count; i++)
-        {
+        @foreach (var appointment in Model)
+        {        
     <tr>
-        <td>@Model.Rows[i][1]</td>
-        <td>@Model.Rows[i][2]</td>
-        <td>@Model.Rows[i][3]</td>
-        <td>@Model.Rows[i][4]</td>
+        <td>@appointment.Client.Name</td>
+        <td>@appointment.DateOfCreation</td>
+        <td>@appointment.StartTime</td>
+        <td>@appointment.Employee.Name</td>
+        <td>@Html.ActionLink("Edit", "EditAppointment", new { id = appointment.Id })</td>
+        <td>@Html.ActionLink("Delete", "DeleteAppointment", new { id = appointment.Id })</td>
+
     </tr>
         }
 </table>
-<a href="@Url.Action("Create","Appointment")">Add Appointment</a>
+<a href="@Url.Action("AddAppointment","Appointment")">Add Appointment</a>
 
 <h2>Index</h2>
 

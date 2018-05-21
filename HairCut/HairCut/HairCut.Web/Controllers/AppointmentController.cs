@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HairCut.Web.Controllers
 {
-    [Authorize(Roles = "Employee")]
+    //[Authorize(Roles = "Employee")]
     public class AppointmentController : Controller
     {
         private readonly IAppointmentService _appointmentService;
@@ -50,6 +50,7 @@ namespace HairCut.Web.Controllers
         {
             AppointmentVm appointmentVm = _appointmentService.GetAppointment(x => x.Id == id);
             return View(appointmentVm);
+
         }
 
         [HttpPost]
@@ -63,5 +64,18 @@ namespace HairCut.Web.Controllers
             else
                 return View(ModelState);
         }
+
+        public IActionResult DeleteAppointment(int id)
+        {
+            AppointmentVm appointmentVm = _appointmentService.GetAppointment(x => x.Id == id);
+            return View(appointmentVm);
+
+        }
+        [HttpPost]
+        public IActionResult DeleteAppointment(AppointmentVm appointmentVm)
+        {
+            return RedirectToAction("Index");
+        }
+
     }
 }

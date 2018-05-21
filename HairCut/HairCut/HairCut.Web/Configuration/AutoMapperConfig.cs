@@ -14,9 +14,11 @@ namespace HairCut.Web.Configuration
             {
                 // Maps
                 mapper.CreateMap<Appointment, AppointmentVm>();
-                mapper.CreateMap<Client, ClientVm>();
-                mapper.CreateMap<User, BaseUserVm>().ForMember(dest => dest.Roles, member => member.MapFrom(src => userManager.GetRolesAsync(src).Result ));      
-                
+                mapper.CreateMap<Client, ClientVm>()
+                .ForMember(dest=>dest.Name, y=>y.MapFrom(src=>src.FirstName +" " +src.LastName));
+                mapper.CreateMap<User, BaseUserVm>().ForMember(dest => dest.Roles, member => member.MapFrom(src => userManager.GetRolesAsync(src).Result ));
+                mapper.CreateMap<Employee, EmployeeVm>()
+                 .ForMember(dest => dest.Name, y => y.MapFrom(src => src.FirstName + " " + src.LastName));
             });
             return configurationExpression;
         }

@@ -18,12 +18,10 @@ namespace HairCut.ViewModels
         public decimal Price { get; set; }
 
         public bool Canceled { get; set; }
-
-        [ForeignKey("ClientId")]
+   
         public ClientVm Client { get; set; }
         public int ClientId { get; set; }
 
-        [ForeignKey("EmployeeId")]
         public EmployeeVm Employee { get; set; }
         public int EmployeeId { get; set; }
     }

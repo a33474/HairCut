@@ -1,6 +1,4 @@
-﻿@{
-    IgnoreBody();
-}
+﻿
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,13 +69,16 @@
                 <div class="navbar-collapse collapse" id="navigation">
                     <ul class="nav navbar-nav navbar-right main-navigation" id="main-menu">
                         <li class="active"><a href="#home">Home</a></li>
+                        <li><a href="/Appointment/Index">Appointment</a></li>
+                        @Html.Partial("_LoginPartial")
+                        @*
                         <li><a href="#about">About</a></li>
                         <li><a href="#service">Service</a></li>
                         <li><a href="#ourteam">Team</a></li>
                         <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#pricing">Pricing</a></li>
                         <li><a href="#testimonial">Testimonial</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#contact">Contact</a></li>*@
                     </ul>
                 </div>
                 <!-- Navigation Ends -->
@@ -90,8 +91,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="header-banner">                    
-                        <img src="images/logo.png" alt="Logo"/> 
+                    <div class="header-banner">
+                        <img src="images/logo.png" alt="Logo" />
                         <p>Discover Your Style & Beauty</p>
                         <h3>Barber Shop Tchida<br />Style & Design</h3>
                     </div>
@@ -132,32 +133,8 @@
     <section class="aboutus" id="about">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="main-title">
-                        <h2>About Barber Shop</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="about-image">
-                        <div class="about-img-single">
-                            <img src="images/about-1.jpg" alt="" />
-                        </div>
-
-                        <div class="about-img-single">
-                            <img src="images/about-2.jpg" alt="" />
-                        </div>
-
-                        <div class="about-img-single">
-                            <img src="images/about-3.jpg" alt="" />
-                        </div>
-                    </div>
-
-                    <div class="about-desc">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Why do we use it.</p>
-                    </div>
+                <div class="col-lg-12">
+                    @RenderBody()
                 </div>
             </div>
         </div>

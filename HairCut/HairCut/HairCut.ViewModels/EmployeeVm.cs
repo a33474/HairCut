@@ -7,7 +7,7 @@ namespace HairCut.ViewModels
 {
     public class EmployeeVm
     {
-        [InverseProperty("Employee")]
-        public IEnumerable<AppointmentVm> BookedAppointments { get; set; }
+      //  public IEnumerable<AppointmentVm> BookedAppointments { get; set; }
+        public string Name { get; set; }
     }
 }

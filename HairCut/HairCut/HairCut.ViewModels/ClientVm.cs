@@ -9,7 +9,7 @@ namespace HairCut.ViewModels
     {
         public string ContactMobile { get; set; }
         public string ContactMail { get; set; }
-        [InverseProperty("Client")]
-        public IEnumerable<AppointmentVm> Appointments { get; set; }
+       // public IEnumerable<AppointmentVm> Appointments { get; set; }
+        public string Name { get; set; }
     }
 }

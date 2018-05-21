@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180327090651_Initial.cs" />
     <Compile Remove="Migrations\20180425092313_DbSchema.cs" />
     <Compile Remove="Migrations\20180425093202_DbSchema.cs" />
     <Compile Remove="Migrations\20180425094013_DbSchema.cs" />
@@ -14,6 +15,8 @@
     <Compile Remove="Migrations\20180425094319_DbSchema.cs" />
     <Compile Remove="Migrations\20180425095032_DbSchema.cs" />
     <Compile Remove="Migrations\20180425100833_DbSchema.cs" />
+    <Compile Remove="Migrations\20180425101611_DbSchema.cs" />
+    <Compile Remove="Migrations\20180521112609_Initial2.cs" />
   </ItemGroup>
 
   <ItemGroup>

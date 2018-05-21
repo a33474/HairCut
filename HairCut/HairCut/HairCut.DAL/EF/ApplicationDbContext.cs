@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using HairCut.BLL.Entities;
+using HairCut.BLL.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace HairCut.DAL.EF
 
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Client> Clients { get; set; }
         public DbSet<Service> Services { get; set; }
 
         public ApplicationDbContext(ConnectionStringDto connectionStringDto)
@@ -34,8 +36,11 @@ namespace HairCut.DAL.EF
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>()
-                .HasDiscriminator<string>("UserType");
+            //modelBuilder.Entity<User>()
+            //    .HasDiscriminator<string>("UserType");   
+            //modelBuilder.Entity<User>();
+            //modelBuilder.Entity<Employee>();
+            //modelBuilder.Entity<Client>();
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(x => x.GetForeignKeys()))
             {

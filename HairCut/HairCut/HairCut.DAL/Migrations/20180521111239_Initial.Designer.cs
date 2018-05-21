@@ -7,12 +7,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 using System;
 
 namespace HairCut.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext<User, Role, int>))]
-    [Migration("20180327090651_Initial")]
+    [Migration("20180521111239_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,7 +23,48 @@ namespace HairCut.DAL.Migrations
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ExampleTemplate.BLL.Entities.Role", b =>
+            modelBuilder.Entity("HairCut.BLL.Entities.Appointment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("Canceled");
+
+                    b.Property<int>("ClientId");
+
+                    b.Property<DateTime>("DateOfCreation");
+
+                    b.Property<int>("EmployeeId");
+
+                    b.Property<DateTime>("EndTime");
+
+                    b.Property<decimal>("Price");
+
+                    b.Property<DateTime>("StartTime");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Appointments");
+                });
+
+            modelBuilder.Entity("HairCut.BLL.Entities.AppointmentService", b =>
+                {
+                    b.Property<int>("ServiceId");
+
+                    b.Property<int>("AppointmentId");
+
+                    b.HasKey("ServiceId", "AppointmentId");
+
+                    b.HasIndex("AppointmentId");
+
+                    b.ToTable("AppointmentService");
+                });
+
+            modelBuilder.Entity("HairCut.BLL.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -46,7 +88,25 @@ namespace HairCut.DAL.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("ExampleTemplate.BLL.Entities.User", b =>
+            modelBuilder.Entity("HairCut.BLL.Entities.Service", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<TimeSpan>("AvgDuration");
+
+                    b.Property<int>("Gender");
+
+                    b.Property<decimal>("Price");
+
+                    b.Property<string>("Type");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Services");
+                });
+
+            modelBuilder.Entity("HairCut.BLL.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -56,10 +116,17 @@ namespace HairCut.DAL.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -95,6 +162,8 @@ namespace HairCut.DAL.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -178,9 +247,58 @@ namespace HairCut.DAL.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("HairCut.BLL.Entities.Employee", b =>
+                {
+                    b.HasBaseType("HairCut.BLL.Entities.User");
+
+
+                    b.ToTable("Employee");
+
+                    b.HasDiscriminator().HasValue("Employee");
+                });
+
+            modelBuilder.Entity("HairCut.BLL.Entities.Identity.Client", b =>
+                {
+                    b.HasBaseType("HairCut.BLL.Entities.User");
+
+                    b.Property<string>("ContactMail");
+
+                    b.Property<string>("ContactMobile");
+
+                    b.ToTable("Client");
+
+                    b.HasDiscriminator().HasValue("Client");
+                });
+
+            modelBuilder.Entity("HairCut.BLL.Entities.Appointment", b =>
+                {
+                    b.HasOne("HairCut.BLL.Entities.Identity.Client", "Client")
+                        .WithMany("Appointments")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("HairCut.BLL.Entities.Employee", "Employee")
+                        .WithMany("BookedAppointments")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("HairCut.BLL.Entities.AppointmentService", b =>
+                {
+                    b.HasOne("HairCut.BLL.Entities.Appointment", "Appointment")
+                        .WithMany()
+                        .HasForeignKey("AppointmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("HairCut.BLL.Entities.Service", "Service")
+                        .WithMany()
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("ExampleTemplate.BLL.Entities.Role")
+                    b.HasOne("HairCut.BLL.Entities.Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -188,7 +306,7 @@ namespace HairCut.DAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("ExampleTemplate.BLL.Entities.User")
+                    b.HasOne("HairCut.BLL.Entities.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -196,7 +314,7 @@ namespace HairCut.DAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("ExampleTemplate.BLL.Entities.User")
+                    b.HasOne("HairCut.BLL.Entities.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -204,12 +322,12 @@ namespace HairCut.DAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.HasOne("ExampleTemplate.BLL.Entities.Role")
+                    b.HasOne("HairCut.BLL.Entities.Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ExampleTemplate.BLL.Entities.User")
+                    b.HasOne("HairCut.BLL.Entities.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -217,7 +335,7 @@ namespace HairCut.DAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("ExampleTemplate.BLL.Entities.User")
+                    b.HasOne("HairCut.BLL.Entities.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
