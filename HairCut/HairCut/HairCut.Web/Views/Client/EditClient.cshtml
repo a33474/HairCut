@@ -1,0 +1,41 @@
+﻿@model HairCut.ViewModels.ClientVm
+
+@{
+    ViewData["Title"] = "EditClient";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditClient</h2>
+
+<h4>ClientVm</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditClient">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ContactMobile" class="control-label"></label>
+                <input asp-for="ContactMobile" class="form-control" />
+                <span asp-validation-for="ContactMobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactMail" class="control-label"></label>
+                <input asp-for="ContactMail" class="form-control" />
+                <span asp-validation-for="ContactMail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

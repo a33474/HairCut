@@ -2,6 +2,7 @@
 using DataAccessLayer.Core.Interfaces.UoW;
 using HairCut.BLL.Entities;
 using HairCut.BLL.Entities.Identity;
+using HairCut.DAL.EF;
 using HairCut.Services.Interfaces;
 using HairCut.ViewModels;
 using System;
@@ -14,9 +15,13 @@ namespace HairCut.Services.Services
 {
     public class ClientService : BaseService, IClientService
     {
-        public ClientService(IUnitOfWork uow) : base(uow)
+        //private ApplicationDbContext<User, Role, int> _context;
+
+        public ClientService(IUnitOfWork uow /*ApplicationDbContext<User, Role, int> context*/) : base(uow)
         {
+            //_context = context;
         }
+
         public IEnumerable<ClientVm> GetClients(Expression<Func<Client, bool>> filterPredicate = null)
         {
             IEnumerable<Client> clients = _uow.Repository<Client>().GetRange(filterPredicate: filterPredicate, orderByPredicate: x => x.OrderBy(p => p.FirstName),

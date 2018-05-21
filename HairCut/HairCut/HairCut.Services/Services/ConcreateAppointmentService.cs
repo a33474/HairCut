@@ -20,12 +20,12 @@ namespace HairCut.Services.Services
         {
             _context = context;
         }
+
         public IEnumerable<AppointmentVm> GetAppointments(Expression<Func<Appointment, bool>> filterPredicate = null)
         {
             IEnumerable<Appointment> appointments = _uow.Repository<Appointment>().GetRange(filterPredicate, false,
-                             x => x.OrderByDescending(p => p.DateOfCreation), null, null,
-                         p => p.Employee, c=>c.Client
-                      );
+                                                        x => x.OrderByDescending(p => p.DateOfCreation), null, null,
+                                                        p => p.Employee, c=>c.Client);
             IEnumerable<AppointmentVm> appointmentVm = AutoMapper.Mapper.Map<IEnumerable<AppointmentVm>>(appointments);
             return appointmentVm;
         }

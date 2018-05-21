@@ -3,27 +3,29 @@
 @{
     ViewData["Title"] = "Index";
 }
+                                                                            @*TESTINGG*@
+<link href="~/css/site.css" rel="stylesheet" />
+<h3>Appointment</h3>
 <table class="table table-bordered table-striped">
+    
     <tr>
         <th>Client</th>
-        <th>Appointment DateOfCreation</th>
-        <th>Appointment StartTime</th>
+        <th>Date Of Creation</th>
+        <th>Start Time</th>
         <th>Employee</th>
     </tr>
-        @foreach (var appointment in Model)
-        {        
-    <tr>
-        <td>@appointment.Client.Name</td>
-        <td>@appointment.DateOfCreation</td>
-        <td>@appointment.StartTime</td>
-        <td>@appointment.Employee.Name</td>
-        <td>@Html.ActionLink("Edit", "EditAppointment", new { id = appointment.Id })</td>
-        <td>@Html.ActionLink("Delete", "DeleteAppointment", new { id = appointment.Id })</td>
-
-    </tr>
-        }
+    @foreach (var appointment in Model)
+    {        
+        <tr>
+            <td>@appointment.Client.Name</td>
+            <td>@appointment.DateOfCreation</td>
+            <td>@appointment.StartTime</td>
+            <td>@appointment.Employee.Name</td>
+            <td>@Html.ActionLink("Edit", "EditAppointment", new { id = appointment.Id })</td>
+            <td>@Html.ActionLink("Delete", "DeleteAppointment", new { id = appointment.Id })</td>
+        </tr>
+    }
 </table>
 <a href="@Url.Action("AddAppointment","Appointment")">Add Appointment</a>
 
-<h2>Index</h2>
 

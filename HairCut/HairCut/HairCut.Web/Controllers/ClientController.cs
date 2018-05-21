@@ -10,15 +10,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HairCut.Web.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ClientController : Controller
     {
         // GET: Client
         private readonly IClientService _clientService;
+
         public  ClientController (IClientService clientService)
         {
             _clientService = clientService;
         }
+
         public ActionResult Index()
         {
             IEnumerable<ClientVm> clientVm = _clientService.GetClients();
@@ -31,6 +33,7 @@ namespace HairCut.Web.Controllers
         }
 
         // GET: Client/Create
+        [HttpGet]
         public ActionResult CreateClient()
         {
             return View(new ClientVm());
@@ -41,10 +44,6 @@ namespace HairCut.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateClient(ClientVm clientVm)
         {
-            //using ()
-            //{
-            // DO I NEED TO CONECT WITH SQL ???
-
             if (ModelState.IsValid)
             {
                 _clientService.AddOrUpdateClient(clientVm);
@@ -77,26 +76,18 @@ namespace HairCut.Web.Controllers
         }
 
         // GET: Client/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteClient(int id)
         {
-            return View();
+            ClientVm clientVm = _clientService.GetClient(x => x.Id == id);
+            return View(clientVm);
         }
 
         // POST: Client/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeleteClient(ClientVm clientVm)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

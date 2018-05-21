@@ -1,0 +1,20 @@
+﻿@using HairCut.ViewModels;
+@model IEnumerable<EmployeeVm>
+    @{
+        ViewData["Title"] = "Index";
+    }
+
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Name</th>
+
+        </tr>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Name</td>
+                <td>@Html.ActionLink("Edit", "EditAppointment", new { name = employee.Name })</td>
+                <td>@Html.ActionLink("Delete", "DeleteAppointment", new { name = employee.Name })</td>
+            </tr>
+        }
+    </table>
