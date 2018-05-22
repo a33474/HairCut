@@ -39,6 +39,7 @@ namespace HairCut.Services.Services
 
         public void AddOrUpdateAppointment(AppointmentVm appointmentVm)
         {
+
             var appointment = Mapper.Map<Appointment>(appointmentVm);
             appointment.DateOfCreation = DateTime.Now;
             _uow.Repository<Appointment>().AddOrUpdate(x => x.Id == appointment.Id, appointment);

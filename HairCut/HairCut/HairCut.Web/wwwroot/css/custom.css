@@ -352,16 +352,16 @@ a:focus{
 	-moz-transition: all 0.5s;
 }
 
-.navbar-default{
-	background: #be9342;
-	border: none;
-	border-bottom: 1px solid transparent;
-	padding: 10px 0;
-	border-radius: 0;
-	z-index: 12;
-	transition: all 0.4s;
-	-webkit-transition: all 0.4s;
-	-moz-transition: all 0.4s;
+.navbar-default {
+    background: #212121;
+    border: none;
+    border-bottom: 1px solid transparent;
+    padding: 10px 0;
+    border-radius: 0;
+    z-index: 12;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
 }
 
 .navbar-default .navbar-nav>li>a:hover{
@@ -381,9 +381,9 @@ a:focus{
 	position: relative;
 }
 
-.active a{
-	background: none !important;
-	color: #282828 !important;
+.active a {
+    background: none !important;
+    color: #d4e6f4 !important;
 }
 
 .navbar-default .active a:after{

@@ -5,14 +5,14 @@
 }
                                                                             @*TESTINGG*@
 <link href="~/css/site.css" rel="stylesheet" />
-<h3>Appointment</h3>
+<h2>Appointment</h2>
 <table class="table table-bordered table-striped">
     
     <tr>
         <th>Client</th>
         <th>Date Of Creation</th>
         <th>Start Time</th>
-        <th>Employee</th>
+        <th>Barber</th>
     </tr>
     @foreach (var appointment in Model)
     {        
@@ -21,11 +21,11 @@
             <td>@appointment.DateOfCreation</td>
             <td>@appointment.StartTime</td>
             <td>@appointment.Employee.Name</td>
-            <td>@Html.ActionLink("Edit", "EditAppointment", new { id = appointment.Id })</td>
-            <td>@Html.ActionLink("Delete", "DeleteAppointment", new { id = appointment.Id })</td>
+            <td>@Html.ActionLink("Edit", "Edit Appointment", new { id = appointment.Id })</td>
+            <td>@Html.ActionLink("Delete", "Delete Appointment", new { id = appointment.Id })</td>
         </tr>
     }
 </table>
-<a href="@Url.Action("AddAppointment","Appointment")">Add Appointment</a>
+<a href="@Url.Action("AddAppointment","Appointment")">Create</a>
 
 
