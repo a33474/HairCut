@@ -12,5 +12,8 @@ namespace HairCut.Services.Interfaces
         IEnumerable<AppointmentVm> GetAppointments(Expression<Func<Appointment, bool>> filterPredicate = null);
         AppointmentVm GetAppointment(Expression<Func<Appointment, bool>> filterPredicate = null);
         void AddOrUpdateAppointment(AppointmentVm appointmentVm);
+        void DeleteAppointment(AppointmentVm appointmentVm);
+
+
     }
 }

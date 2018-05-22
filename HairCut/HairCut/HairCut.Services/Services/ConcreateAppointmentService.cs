@@ -44,6 +44,16 @@ namespace HairCut.Services.Services
             _uow.Repository<Appointment>().AddOrUpdate(x => x.Id == appointment.Id, appointment);
             _uow.Save();
         }
+
+        public void DeleteAppointment(AppointmentVm appointmentVm)
+        {
+            var appointment = _uow.Repository<Appointment>().Get(appointmentVm.Id);
+            if (appointment != null)
+            {
+                _uow.Repository<Appointment>().Delete(appointment);
+                _uow.Save();
+            }
+        }
     }
 }
 

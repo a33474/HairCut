@@ -28,19 +28,26 @@ namespace HairCut.Services.Services
             return employeeVm;
         }
 
-        public EmployeeVm GetEmployee(Expression<Func<Employee, bool>> filterPredicate = null)
+        public AddOrUpdateEmployeeVm GetEmployee(Expression<Func<Employee, bool>> filterPredicate = null)
         {
             Employee employee = _uow.Repository<Employee>().Get(filterPredicate: filterPredicate);
-            EmployeeVm employeeVm = Mapper.Map<EmployeeVm>(employee);
+            AddOrUpdateEmployeeVm employeeVm = Mapper.Map<AddOrUpdateEmployeeVm>(employee);
             return employeeVm;
         }
 
-        public void AddOrUpdateEmployee(EmployeeVm employeeVm)
+        public void AddOrUpdateEmployee(AddOrUpdateEmployeeVm employeeVm)
         {
-            var employee = Mapper.Map<Employee>(employeeVm);
-            employee.FirstName = string.Empty;
-            _uow.Repository<Employee>().AddOrUpdate(y => y.FirstName == employee.FirstName, employee);
+            Employee employee = _uow.Repository<Employee>().Get(employeeVm.Id);
+            employee.FirstName = employeeVm.FirstName;
+            employee.LastName = employeeVm.LastName;
+
+            //_uow.Repository<Employee>().Update(<y< => y.Id==employeeVm.Id, employee);
             _uow.Save();
+        }
+
+        public void DeleteEmployee(int employeeId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -10,8 +10,8 @@ namespace HairCut.Services.Interfaces
     public interface IEmployeeService
     {
         IEnumerable<EmployeeVm> GetEmployees(Expression<Func<Employee, bool>> filterPredicate = null);
-        EmployeeVm GetEmployee(Expression<Func<Employee, bool>> filterPredicate = null);
-        void AddOrUpdateEmployee(EmployeeVm employeeVm);
-
+        AddOrUpdateEmployeeVm GetEmployee(Expression<Func<Employee, bool>> filterPredicate = null);
+        void AddOrUpdateEmployee(AddOrUpdateEmployeeVm employeeVm);
+        void DeleteEmployee(int employeeId);
     }
 }

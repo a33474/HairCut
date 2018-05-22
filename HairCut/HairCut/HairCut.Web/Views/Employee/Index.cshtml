@@ -13,8 +13,8 @@
         {
             <tr>
                 <td>@employee.Name</td>
-                <td>@Html.ActionLink("Edit", "EditAppointment", new { name = employee.Name })</td>
-                <td>@Html.ActionLink("Delete", "DeleteAppointment", new { name = employee.Name })</td>
+                <td>@Html.ActionLink("Edit", "EditEmployee", new { id = employee.Id })</td>
+                <td>@Html.ActionLink("Delete", "DeleteEmployee", new { id = employee.Id })</td>
             </tr>
         }
     </table>

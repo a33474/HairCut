@@ -72,6 +72,8 @@ namespace HairCut.Web
             services.AddScoped<IRepository<Role>, EntityFrameworkRepository<Role>>();
             services.AddScoped<IRepository<IdentityUserRole<int>>, EntityFrameworkRepository<IdentityUserRole<int>>>();
             services.AddScoped<IAppointmentService, ConcreateAppointmentService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IClientService, ClientService>();
             #endregion
             Services = services;
         }

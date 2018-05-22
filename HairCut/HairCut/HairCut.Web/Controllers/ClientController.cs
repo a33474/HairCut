@@ -32,26 +32,26 @@ namespace HairCut.Web.Controllers
                 return View(clientVm);
         }
 
-        // GET: Client/Create
-        [HttpGet]
-        public ActionResult CreateClient()
-        {
-            return View(new ClientVm());
-        }
+        //// GET: Client/Create
+        //[HttpGet]
+        //public ActionResult CreateClient()
+        //{
+        //    return View(new ClientVm());
+        //}
 
-        // POST: Client/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateClient(ClientVm clientVm)
-        {
-            if (ModelState.IsValid)
-            {
-                _clientService.AddOrUpdateClient(clientVm);
-                return RedirectToAction("Index");
-            }
-            else
-                return View(ModelState);
-        }
+        //// POST: Client/Create
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult CreateClient(ClientVm clientVm)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _clientService.AddOrUpdateClient(clientVm);
+        //        return RedirectToAction("Index");
+        //    }
+        //    else
+        //        return View(ModelState);
+        //}
 
         // GET: Client/Edit/5
         public ActionResult EditClient(int id)

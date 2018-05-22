@@ -7,7 +7,8 @@ namespace HairCut.ViewModels
 {
     public class EmployeeVm
     {
-      //  public IEnumerable<AppointmentVm> BookedAppointments { get; set; }
+        public int Id { get; set; }
+                                           //  public IEnumerable<AppointmentVm> BookedAppointments { get; set; }
         public string Name { get; set; }
     }
 }
