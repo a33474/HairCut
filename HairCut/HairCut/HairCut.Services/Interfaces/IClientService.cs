@@ -9,8 +9,9 @@ namespace HairCut.Services.Interfaces
 {
     public interface IClientService
     {
-        IEnumerable<ClientVm> GetClients(Expression<Func<Client, bool>> filterPredicate = null);
-        ClientVm GetClient(Expression<Func<Client, bool>> filterPredicate = null);
-        void AddOrUpdateClient(ClientVm clientVm);
+        IEnumerable<AddOrUpdateClientVm> GetClients(Expression<Func<Client, bool>> filterPredicate = null);
+        AddOrUpdateClientVm GetClient(Expression<Func<Client, bool>> filterPredicate = null);
+        void AddOrUpdateClient(AddOrUpdateClientVm clientVm);
+        void DeleteClient(int clientId);
     }
 }

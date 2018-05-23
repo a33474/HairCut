@@ -5,8 +5,9 @@ using System.Text;
 
 namespace HairCut.ViewModels
 {
-    public class ClientVm
+    public class AddOrUpdateClientVm
     {
+        public int Id { get; set; }
         public string ContactMobile { get; set; }
         public string ContactMail { get; set; }
        // public IEnumerable<AppointmentVm> Appointments { get; set; }

@@ -15,36 +15,46 @@ namespace HairCut.Services.Services
 {
     public class ClientService : BaseService, IClientService
     {
-        //private ApplicationDbContext<User, Role, int> _context;
+        
 
-        public ClientService(IUnitOfWork uow /*ApplicationDbContext<User, Role, int> context*/) : base(uow)
+        public ClientService(IUnitOfWork uow ) : base(uow)
         {
-            //_context = context;
+            
         }
 
-        public IEnumerable<ClientVm> GetClients(Expression<Func<Client, bool>> filterPredicate = null)
+        public IEnumerable<AddOrUpdateClientVm> GetClients(Expression<Func<Client, bool>> filterPredicate = null)
         {
             IEnumerable<Client> clients = _uow.Repository<Client>().GetRange(filterPredicate: filterPredicate, orderByPredicate: x => x.OrderBy(p => p.FirstName),
                                                                         tablePredicate: p => p.Appointments,
                                                                         enableTracking: false);
-            IEnumerable<ClientVm> clientVm = AutoMapper.Mapper.Map<IEnumerable<ClientVm>>(clients);
+            IEnumerable<AddOrUpdateClientVm> clientVm = AutoMapper.Mapper.Map<IEnumerable<AddOrUpdateClientVm>>(clients);
             return clientVm;
         }
 
-        public ClientVm GetClient(Expression<Func<Client, bool>> filterPredicate = null)
+        public AddOrUpdateClientVm GetClient(Expression<Func<Client, bool>> filterPredicate = null)
         {
             Client client = _uow.Repository<Client>().Get(filterPredicate: filterPredicate);
-            ClientVm clientVm = Mapper.Map<ClientVm>(client);
+            AddOrUpdateClientVm clientVm = Mapper.Map<AddOrUpdateClientVm>(client);
             return clientVm;
         }
 
-        public void AddOrUpdateClient(ClientVm clientVm)
+        public void AddOrUpdateClient(AddOrUpdateClientVm clientVm)
         {
             var client = Mapper.Map<Client>(clientVm);
             client.FirstName = string.Empty;
             _uow.Repository<Client>().AddOrUpdate(x => x.FirstName == client.FirstName, client);
             _uow.Save();
         }
+
+        public void DeleteClient(int clientId)
+        {
+            Client client = _uow.Repository<Client>().Get(clientId);
+            if (client != null)
+            {
+                _uow.Repository<Client>().Delete(client);
+                _uow.Save();
+            }
+        }   
     }
 }
 

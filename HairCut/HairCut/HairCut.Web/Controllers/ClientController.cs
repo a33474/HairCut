@@ -23,7 +23,7 @@ namespace HairCut.Web.Controllers
 
         public ActionResult Index()
         {
-            IEnumerable<ClientVm> clientVm = _clientService.GetClients();
+            IEnumerable<AddOrUpdateClientVm> clientVm = _clientService.GetClients();
             if (HttpContext.Request.Headers["x-requested-with"]=="XMLHttpRequest")
             {
                 return PartialView(clientVm);
@@ -42,7 +42,7 @@ namespace HairCut.Web.Controllers
         //// POST: Client/Create
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public ActionResult CreateClient(ClientVm clientVm)
+        //public ActionResult CreateClient(AddOrUpdateClient clientVm)
         //{
         //    if (ModelState.IsValid)
         //    {
@@ -56,14 +56,14 @@ namespace HairCut.Web.Controllers
         // GET: Client/Edit/5
         public ActionResult EditClient(int id)
         {
-            ClientVm clientVm = _clientService.GetClient(x => x.Id == id);
+            AddOrUpdateClientVm clientVm = _clientService.GetClient(x => x.Id == id);
             return View(clientVm);
         }
 
         // POST: Client/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditClient(ClientVm clientVm)
+        public ActionResult EditClient(AddOrUpdateClientVm clientVm)
         {
             if (ModelState.IsValid)
             {
@@ -78,14 +78,14 @@ namespace HairCut.Web.Controllers
         // GET: Client/Delete/5
         public ActionResult DeleteClient(int id)
         {
-            ClientVm clientVm = _clientService.GetClient(x => x.Id == id);
+            AddOrUpdateClientVm clientVm = _clientService.GetClient(x => x.Id == id);
             return View(clientVm);
         }
 
         // POST: Client/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteClient(ClientVm clientVm)
+        public ActionResult DeleteClient(AddOrUpdateClientVm clientVm)
         {
             return RedirectToAction("Index");
         }

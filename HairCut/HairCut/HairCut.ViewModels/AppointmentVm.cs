@@ -19,7 +19,7 @@ namespace HairCut.ViewModels
 
         public bool Canceled { get; set; }
    
-        public ClientVm Client { get; set; }
+        public AddOrUpdateClientVm Client { get; set; }
         public int ClientId { get; set; }
 
         public EmployeeVm Employee { get; set; }

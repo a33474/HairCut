@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HairCut.ViewModels
 {
-  public  class AddOrUpdateEmployeeVm
+    public  class AddOrUpdateEmployeeVm
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

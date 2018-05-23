@@ -217,6 +217,11 @@ namespace HairCut.Web.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
+                //if (model.UserType == emp )
+                //User user = new Employee { UserName = model.Email, Email = model.Email, FirstName = model.FirstName,LastName = model.LastName  };
+                //else
+                //var user = new Client { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+
                 var user = new Employee { UserName = model.Email, Email = model.Email, FirstName = model.FirstName,LastName = model.LastName  };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

@@ -47,7 +47,12 @@ namespace HairCut.Services.Services
 
         public void DeleteEmployee(int employeeId)
         {
-            throw new NotImplementedException();
+            Employee employee = _uow.Repository<Employee>().Get(employeeId);
+            if (employee != null)
+            {
+                _uow.Repository<Employee>().Delete(employee);
+                _uow.Save();
+            }
         }
     }
 }

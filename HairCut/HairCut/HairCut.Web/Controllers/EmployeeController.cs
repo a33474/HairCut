@@ -44,11 +44,11 @@ namespace HairCut.Web.Controllers
         //        _employeeService.AddOrUpdateEmployee(employeeVm);
         //        return RedirectToAction("Index");
         //    }
-        //        return View(ModelState);
-            
+        //    return View(ModelState);
+
         //}
 
-        // GET: Employee/Edit/5
+        ////GET: Employee/Edit/5
         public ActionResult EditEmployee(int id)
         {
             AddOrUpdateEmployeeVm employeeVm = _employeeService.GetEmployee(y => y.Id ==id);
